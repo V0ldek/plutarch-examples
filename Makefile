@@ -5,7 +5,7 @@ build: requires_nix_shell
 	cabal v2-build $(GHC_FLAGS)
 
 watch: requires_nix_shell
-	while sleep 1; do find src liquidity-bridge.cabal | entr -cd make build; done
+	while sleep 1; do find src plutarch-examples.cabal | entr -cd make build; done
 
 test: requires_nix_shell
 	cabal v2-test
@@ -14,7 +14,7 @@ accept_pirs: requires_nix_shell
 	stack build --test $(STACK_FLAGS) $(GHC_FLAGS) --ta '-p MarketAction --accept'
 
 ghci: requires_nix_shell
-	cabal v2-repl $(GHC_FLAGS) liquidity-bridge
+	cabal v2-repl $(GHC_FLAGS) plutarch-examples
 
 # Source dirs to run fourmolu on
 FORMAT_SOURCES := $(shell git ls-tree -r HEAD --full-tree --name-only | grep -E '.*\.hs' )
@@ -85,7 +85,7 @@ update_plutus:
 ################################################################################
 # Utils
 
-build_path = dist-newstyle/build/x86_64-linux/ghc-8.10.4.20210212/liquidity-bridge-0.1
+build_path = dist-newstyle/build/x86_64-linux/ghc-8.10.4.20210212/plutarch-examples-0.1
 clear_build:
 	@[ ! -e $(build_path) ] || rm -rf $(build_path)
 

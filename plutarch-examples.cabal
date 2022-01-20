@@ -1,13 +1,13 @@
 cabal-version:      3.0
-name:               liquidity-bridge
+name:               plutarch-examples
 version:            0.1
 synopsis:           TODO
 description:        TODO
 homepage:
-  https://github.com/mlabs-haskell/CardStarter-LiquidityBridge
+  https://github.com/V0ldek/plutarch-examples.git
 
 bug-reports:
-  https://github.com/mlabs-haskell/CardStarter-LiquidityBridge
+  https://github.com/V0ldek/plutarch-examples.git
 
 license:
 license-file:
@@ -22,7 +22,7 @@ extra-source-files: README.md
 source-repository head
   type:     git
   location:
-    https://github.com/mlabs-haskell/CardStarter-LiquidityBridge
+    https://github.com/V0ldek/plutarch-examples.git
 
 -- Common sections
 
@@ -96,16 +96,16 @@ common common-lang
 
 library
   import:          common-lang
-  exposed-modules: LiquidityBridge
+  exposed-modules: PlutarchExamples
   build-depends:   plutarch
   hs-source-dirs:  src
 
-test-suite liquidity-bridge-test
+test-suite plutarch-examples-test
   import:         common-lang
   type:           exitcode-stdio-1.0
   main-is:        Spec.hs
   build-depends:
-    , liquidity-bridge
+    , plutarch-examples
     , plutarch
     , QuickCheck
     , quickcheck-instances
