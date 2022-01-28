@@ -3,7 +3,7 @@
 
   inputs.nixpkgs.follows = "plutarch/nixpkgs";
   inputs.haskell-nix.follows = "plutarch/haskell-nix";
-  inputs.plutarch.url = "github:Plutonomicon/plutarch?ref=las/2";
+  inputs.plutarch.url = "github:Plutonomicon/plutarch?ref=master";
 
   outputs = inputs@{ self, nixpkgs, haskell-nix, plutarch, ... }:
     let
@@ -14,8 +14,8 @@
       nixpkgsFor = system: import nixpkgs { inherit system; overlays = [ haskell-nix.overlay ]; inherit (haskell-nix) config; };
       nixpkgsFor' = system: import nixpkgs { inherit system; inherit (haskell-nix) config; };
 
-      ghcVersion = "ghc921";
-      tools.fourmolu = { };
+      ghcVersion = "ghc8107";
+      tools = { };
 
       projectFor = system:
         let pkgs = nixpkgsFor system; in

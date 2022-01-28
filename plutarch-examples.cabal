@@ -3,12 +3,8 @@ name:               plutarch-examples
 version:            0.1
 synopsis:           TODO
 description:        TODO
-homepage:
-  https://github.com/V0ldek/plutarch-examples.git
-
-bug-reports:
-  https://github.com/V0ldek/plutarch-examples.git
-
+homepage:           https://github.com/V0ldek/plutarch-examples.git
+bug-reports:        https://github.com/V0ldek/plutarch-examples.git
 license:
 license-file:
 author:             MLabs
@@ -21,11 +17,9 @@ extra-source-files: README.md
 
 source-repository head
   type:     git
-  location:
-    https://github.com/V0ldek/plutarch-examples.git
+  location: https://github.com/V0ldek/plutarch-examples.git
 
 -- Common sections
-
 common common-lang
   ghc-options:
     -Wall -Wcompat -Wincomplete-uni-patterns -Wno-unused-do-bind
@@ -90,14 +84,18 @@ common common-lang
     TypeOperators
     TypeSynonymInstances
     ViewPatterns
-    QualifiedDo
 
   default-language:   Haskell2010
 
 library
   import:          common-lang
-  exposed-modules: PlutarchExamples
-  build-depends:   plutarch
+  exposed-modules: 
+    PlutarchExamples.Gift.Validator.Plutarch
+    PlutarchExamples.SimpleEscrow.Validator.Plutarch
+  build-depends:   
+    , generics-sop
+    , plutarch
+    , plutus-ledger-api
   hs-source-dirs:  src
 
 test-suite plutarch-examples-test
@@ -105,8 +103,9 @@ test-suite plutarch-examples-test
   type:           exitcode-stdio-1.0
   main-is:        Spec.hs
   build-depends:
-    , plutarch-examples
     , plutarch
+    , plutarch-examples
+    , plutus-ledger-api
     , QuickCheck
     , quickcheck-instances
     , tasty
